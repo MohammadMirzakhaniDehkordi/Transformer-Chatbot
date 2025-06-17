@@ -42,118 +42,166 @@ chatbot_project/
 └── README.md
 ```
 
+
+## ⚡ Quick Setup Script
+
+For convenience, you can use the provided `setup.sh` script to automate environment setup and dependency installation.
+
+**Usage:**
+
+```bash
+bash setup.sh
+```
+
+This script will:
+- Create a Python virtual environment
+- Activate the environment
+- Install required dependencies (API and/or Gradio UI)
+- (Optionally) Install PyTorch for your platform
+
+ **Note:** You may need to give execute permission first:
+ 
+ ```bash
+ chmod +x setup.sh
+```
+
+Feel free to inspect or modify `setup.sh` to match your system or preferences.
+
+
+
+
 ## 🚀 How to Run Locally
+1. **Clone the repo**
 
-1. Clone the repo
+    ```bash
+    git clone https://github.com/your_username/chatbot_project.git
+    cd chatbot_project
+    ```
 
-```bash
-git clone https://github.com/your_username/chatbot_project.git
-cd chatbot_project
-```
+2. **Install dependencies**
 
-2. Install dependencies
+     - Run the project in a virtual environment (macOS):
 
-Run the Project in a Virtual Environment (macOS):
-```bash
-python3 -m venv venv
-```
-Activate the environment
-```
-source venv/bin/activate
-```
+          ```bash
+          python3 -m venv venv
+          ```
 
-For API:
+     - Activate the environment:
 
-```bash
-pip install -r requirements_api.txt
-```
-For Gradio UI:
+          ```bash
+          source venv/bin/activate
+          ```
 
-```bash
-pip install -r requirements_gradio.txt
-```
+     -  For API:
 
-✅ For M1/M2 Mac (Apple Silicon):
+          ```bash
+          pip install -r requirements_api.txt
+          ```
 
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-```
+     -  For Gradio UI:
 
-If you're using an Intel Mac:
+          ```bash
+          pip install -r requirements_gradio.txt
+          ```
 
-```bash
-pip install torch torchvision torchaudio
-```
+     -  ✅ For M1/M2 Mac (Apple Silicon):
 
-🧪 Test Installation
+          ```bash
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          ```
 
-```bash
-python -c "import torch; print(torch.__version__)"
-```
+     -  If you're using an Intel Mac:
 
+          ```bash
+          pip install torch torchvision torchaudio
+          ```
 
-3. 🚀 Run the chatbot:
+     - 🧪 Test Installation
 
-- 🧠  Train the model (optional - already trains when imported):
+          ```bash
+          python -c "import torch; print(torch.__version__) 
+          ```
+          
+3. **Run the chatbot**
 
-```bash
-python chatbot_transformer.py
-```
+    - 🧠 Train the model (optional - already trains when imported):
 
-- 🚀  Run FastAPI server:
+        ```bash
+        python chatbot_transformer.py
+        ```
 
-```bash 
-uvicorn chatbot_api:app --reload
-```
- 
- - - Then POST to: http://127.0.0.1:8000/chat
- 
+    - 🚀 Run FastAPI server:
 
-- 🌐 Run Gradio UI:
-This will open a chat interface in your browser.
-``` bash 
-python app_gradio.py
-```
+        ```bash
+        uvicorn chatbot_api:app --reload
+        ```
+        Then POST to: [http://127.0.0.1:8000/chat](http://127.0.0.1:8000/chat)
+
+    - 🌐 Run Gradio UI (this will open a chat interface in your browser):
+
+        ```bash
+        python app_gradio.py
+        ```
+
 
 ## 🐳 Docker Support
+
 ### ✅ Build and Run with Docker (API Mode)
+
 Build Docker image:
+
 ```bash
 docker build -t transformer-chatbot .
 ```
-Run the container
+
+Run the container:
+
 ```bash
 docker run -p 8000:8000 transformer-chatbot
 ```
-Then open: http://localhost:8000/docs
 
-## ☁️  Deployment
+Then open: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-### 1. 🌐  Deploy API to Railway
 
+
+## ☁️ Deployment
+
+### 1. 🌐 Deploy API to Railway
 
 - Create a new Railway project and connect this repo.
 - In Railway:
-- - Set the build command: ``` pip install -r requirements_api.txt ```
-- - Set the start command: ``` uvicorn chatbot_api:app --host=0.0.0.0 --port=8000 ```
+    - Set the build command:  
+      ```bash
+      pip install -r requirements_api.txt
+      ```
+    - Set the start command:  
+      ```bash
+      uvicorn chatbot_api:app --host=0.0.0.0 --port=8000
+      ```
 
-### 2. 🌐 2. Deploy UI to Hugging Face Spaces
+### 2. 🌐 Deploy UI to Hugging Face Spaces
+
 - Create a new space → Choose “Gradio” + connect this GitHub repo.
-- Set app_gradio.py as main file.
-- Ensure requirements_gradio.txt is present.
-- The bot will be live at: https://huggingface.co/spaces/your_username/chatbot_project
+- Set `app_gradio.py` as main file.
+- Ensure `requirements_gradio.txt` is present.
+- The bot will be live at:  
+  `https://huggingface.co/spaces/your_username/chatbot_project`
+
 
 ## 📝 Example API Usage
+
 ```bash
 curl -X POST http://localhost:8000/chat \
      -H "Content-Type: application/json" \
      -d '{"message":"hello"}'
 ```
 
-Return:
-```bash
+Returns:
+
+```json
 {"response": "hi . how are you ?"}
 ```
+
 
 ## 📌 Limitations
 
@@ -162,15 +210,16 @@ Return:
 - Not stateful — replies are single-turn.
 - No persistence or database.
 
+
 ## ✨ TODO (Contributions welcome!)
 
- - Add better tokenizer (e.g. BPE, spaCy).
- - Multi-turn chat memory.
- - Support for Persian (فارسی) data.
- - Pretrained Transformer (e.g. BART, T5).
- - Beam search decoding.
+- Add better tokenizer (e.g. BPE, spaCy).
+- Multi-turn chat memory.
+- Support for Persian (فارسی) data.
+- Pretrained Transformer (e.g. BART, T5).
+- Beam search decoding.
 
 
- ## 📜 License
+## 📜 License
 
 MIT License — for learning and educational use.
