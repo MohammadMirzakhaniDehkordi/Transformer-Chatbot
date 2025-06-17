@@ -52,6 +52,16 @@ cd chatbot_project
 ```
 
 2. Install dependencies
+
+Run the Project in a Virtual Environment (macOS):
+```bash
+python3 -m venv venv
+```
+Activate the environment
+```
+source venv/bin/activate
+```
+
 For API:
 
 ```bash
@@ -61,6 +71,24 @@ For Gradio UI:
 
 ```bash
 pip install -r requirements_gradio.txt
+```
+
+✅ For M1/M2 Mac (Apple Silicon):
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+```
+
+If you're using an Intel Mac:
+
+```bash
+pip install torch torchvision torchaudio
+```
+
+🧪 Test Installation
+
+```bash
+python -c "import torch; print(torch.__version__)"
 ```
 
 3. Run the chatbot:

@@ -1,4 +1,54 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.log
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# Model artifacts
 *.pt
-.env
+*.pth
+*.onnx
+
+# Data files
+*.csv
+*.tsv
+*.jsonl
+*.cache/
+cache/
+datasets/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Hugging Face / Gradio
+huggingface/
+gradio_cache/
+
+# Docker
+*.tar
+*.img
+*.bak
+docker-compose.override.yml
+
+# FastAPI reload
+__pycache__/
