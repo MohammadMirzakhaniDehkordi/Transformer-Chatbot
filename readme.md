@@ -91,23 +91,26 @@ pip install torch torchvision torchaudio
 python -c "import torch; print(torch.__version__)"
 ```
 
-3. Run the chatbot:
 
-- ➤ Train the model (optional - already trains when imported):
+3. 🚀 Run the chatbot:
+
+- 🧠  Train the model (optional - already trains when imported):
 
 ```bash
 python chatbot_transformer.py
 ```
 
-- ➤  Run FastAPI server:
+- 🚀  Run FastAPI server:
 
 ```bash 
 uvicorn chatbot_api:app --reload
 ```
+ 
  - - Then POST to: http://127.0.0.1:8000/chat
  
-- ➤ Run Gradio UI:
 
+- 🌐 Run Gradio UI:
+This will open a chat interface in your browser.
 ``` bash 
 python app_gradio.py
 ```
