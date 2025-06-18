@@ -1,0 +1,35 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🧾 Checkout repo
+      uses: actions/checkout@v3
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements_api.txt
+
+    - name: 🧪 Run syntax check with flake8
+      run: |
+        pip install flake8
+        flake8 chatbot_transformer.py chatbot_api.py app_gradio.py || true
+
+    # Optional: Run basic unit tests (if added)
+    # - name: 🧪 Run tests
+    #   run: pytest tests/
+
