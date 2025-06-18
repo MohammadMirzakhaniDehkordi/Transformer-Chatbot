@@ -3,7 +3,7 @@ from datasets import load_dataset
 from collections import Counter
 
 # -- Data prep (دموی سریع بر ۵هزار زوج)
-data = load_dataset("cornell_movie_dialog", split="train")
+data = load_dataset("cornell_movie_dialog", split="train", trust_remote_code=True)
 dialogs = data["lines"]
 pairs = []
 for i in range(len(dialogs)-1):
